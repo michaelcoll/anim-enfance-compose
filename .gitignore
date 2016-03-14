@@ -1,0 +1,8 @@
+# IDE files
+.idea
+
+# Build dirs
+target
+
+# Maven dependency tree log
+DT.log
