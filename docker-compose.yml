@@ -1,0 +1,21 @@
+version: "2"
+services:
+  dbStorage:
+    image: busybox
+  db:
+    image: mariadb:10.1
+    volumes_from:
+      - dbStorage
+    environment:
+        MYSQL_ROOT_PASSWORD: 123456
+        MYSQL_USER: dev
+        MYSQL_PASSWORD: 123456
+        MYSQL_DATABASE: ae-db
+  front:
+    image: michaelcoll/anim-enfance-front
+    ports:
+      - "80:80"
+  back:
+    image: michaelcoll/anim-enfance-back
+    links:
+      - db:db
